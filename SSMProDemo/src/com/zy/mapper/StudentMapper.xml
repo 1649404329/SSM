@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zy.mapper.StudentMapper">
+	<!-- 动态Sql 根据学生班级或年龄查询学生 -->
+	<select id="queryAllStudent"  resultType="com.zy.pojo.Student">
+		select * from student
+	</select>
+	
+	<!-- 登录验证 -->
+	<select id="queryLogin"  resultType="com.zy.pojo.Student">
+		SELECT * FROM Student WHERE stuName LIKE #{username} AND PASSWORD LIKE #{password}
+	</select>
+	
+	<!-- 根据学生stuNo删除学生 -->
+	<delete id="delStudent" parameterType="int">
+		delete from Student where stuNo=#{stuNo}
+	</delete>
+	
+	<select id="queryStudentByStuNo"  resultType="com.zy.pojo.Student">
+		select * from student where stuNo=#{stuNo}
+	</select>
+</mapper>
